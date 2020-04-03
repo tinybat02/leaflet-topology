@@ -144,6 +144,7 @@ export class MainPanel extends PureComponent<Props> {
           if (closestData.length > 1) {
             const pathFinding: [number, number][] = [];
             const first_path = pathFinder.findPath(closestData[0], closestData[1]);
+            console.log('frist_path', first_path);
             pathFinding.push(...(first_path || { path: [] }).path);
             for (let i = 1; i < closestData.length - 1; i++) {
               const pathResult = (
@@ -158,10 +159,7 @@ export class MainPanel extends PureComponent<Props> {
                 pathFinding.push(...pathResult.slice(1));
               }
             }
-
-            /* this.topologyLine = L.polyline(pathFinding, {
-              color: 'yellow',
-            }).addTo(this.map); */
+            console.log('total path', pathFinding);
 
             // @ts-ignore
             this.topologyLine = L.motion
@@ -173,7 +171,7 @@ export class MainPanel extends PureComponent<Props> {
                 },
                 {
                   auto: true,
-                  duration: 3000,
+                  duration: 5000,
                   // @ts-ignore
                   easing: L.Motion.Ease.easeInOutQuart,
                 },

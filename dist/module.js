@@ -23023,6 +23023,7 @@ function (_super) {
           if (closestData_1.length > 1) {
             var pathFinding = [];
             var first_path = pathFinder.findPath(closestData_1[0], closestData_1[1]);
+            console.log('frist_path', first_path);
             pathFinding.push.apply(pathFinding, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])((first_path || {
               path: []
             }).path));
@@ -23038,18 +23039,15 @@ function (_super) {
                 pathFinding.push.apply(pathFinding, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(pathResult.slice(1)));
               }
             }
-            /* this.topologyLine = L.polyline(pathFinding, {
-              color: 'yellow',
-            }).addTo(this.map); */
-            // @ts-ignore
 
+            console.log('total path', pathFinding); // @ts-ignore
 
             this.topologyLine = leaflet__WEBPACK_IMPORTED_MODULE_2___default.a.motion // @ts-ignore
             .polyline(pathFinding, {
               color: 'yellow'
             }, {
               auto: true,
-              duration: 3000,
+              duration: 5000,
               // @ts-ignore
               easing: leaflet__WEBPACK_IMPORTED_MODULE_2___default.a.Motion.Ease.easeInOutQuart
             }, {
