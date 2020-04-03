@@ -144,7 +144,7 @@ export class MainPanel extends PureComponent<Props> {
           if (closestData.length > 1) {
             const pathFinding: [number, number][] = [];
             const first_path = pathFinder.findPath(closestData[0], closestData[1]);
-            console.log('frist_path', first_path);
+
             pathFinding.push(...(first_path || { path: [] }).path);
             for (let i = 1; i < closestData.length - 1; i++) {
               const pathResult = (
@@ -159,32 +159,33 @@ export class MainPanel extends PureComponent<Props> {
                 pathFinding.push(...pathResult.slice(1));
               }
             }
-            console.log('total path', pathFinding);
 
-            // @ts-ignore
-            this.topologyLine = L.motion
+            if (pathFinding.length > 1) {
               // @ts-ignore
-              .polyline(
-                pathFinding,
-                {
-                  color: 'yellow',
-                },
-                {
-                  auto: true,
-                  duration: 5000,
-                  // @ts-ignore
-                  easing: L.Motion.Ease.easeInOutQuart,
-                },
-                {
-                  removeOnEnd: true,
-                  showMarker: true,
-                  icon: L.icon({
-                    iconUrl: Person,
-                    iconSize: [30, 30],
-                  }),
-                }
-              )
-              .addTo(this.map);
+              this.topologyLine = L.motion
+                // @ts-ignore
+                .polyline(
+                  pathFinding,
+                  {
+                    color: 'yellow',
+                  },
+                  {
+                    auto: true,
+                    duration: 500 * pathFinding.length,
+                    // @ts-ignore
+                    easing: L.Motion.Ease.easeInOutQuart,
+                  },
+                  {
+                    removeOnEnd: true,
+                    showMarker: true,
+                    icon: L.icon({
+                      iconUrl: Person,
+                      iconSize: [30, 30],
+                    }),
+                  }
+                )
+                .addTo(this.map);
+            }
           }
         }
       }
