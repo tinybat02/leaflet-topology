@@ -173,7 +173,7 @@ export class MainPanel extends PureComponent<Props> {
                     auto: true,
                     duration: 500 * pathFinding.length,
                     // @ts-ignore
-                    easing: L.Motion.Ease.easeInOutQuart,
+                    easing: L.Motion.Ease.linear,
                   },
                   {
                     removeOnEnd: true,

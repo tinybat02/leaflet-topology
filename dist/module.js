@@ -23048,7 +23048,7 @@ function (_super) {
                 auto: true,
                 duration: 500 * pathFinding.length,
                 // @ts-ignore
-                easing: leaflet__WEBPACK_IMPORTED_MODULE_2___default.a.Motion.Ease.easeInOutQuart
+                easing: leaflet__WEBPACK_IMPORTED_MODULE_2___default.a.Motion.Ease.linear
               }, {
                 removeOnEnd: true,
                 showMarker: true,
